@@ -5,7 +5,14 @@ import {JavaDistribution} from './package-types.js';
 export type JavaPlatform = 'linux' | 'macos' | 'windows' | 'solaris';
 
 export type JavaArchitecture =
-  'x86' | 'x64' | 'armv7' | 'aarch64' | 'ppc64le' | 'ppc64' | 's390x';
+  | 'x86'
+  | 'x64'
+  | 'armv7'
+  | 'aarch64'
+  | 'ppc64le'
+  | 'ppc64'
+  | 'riscv64'
+  | 's390x';
 
 interface VersionedArchitecture {
   architecture: JavaArchitecture;
@@ -35,7 +42,11 @@ export const JAVA_PLATFORM_CAPABILITIES: Record<
 > = {
   [JavaDistribution.Temurin]: {
     platforms: {
-      linux: [...STANDARD_LINUX, {architecture: 'armv7', versionRange: '<18'}],
+      linux: [
+        ...STANDARD_LINUX,
+        'riscv64',
+        {architecture: 'armv7', versionRange: '<18'}
+      ],
       macos: X64_ARM64,
       windows: ['x64', 'x86', 'aarch64']
     }
@@ -174,6 +185,7 @@ const CANONICAL_ARCHITECTURES: readonly JavaArchitecture[] = [
   'aarch64',
   'ppc64le',
   'ppc64',
+  'riscv64',
   's390x'
 ];
 

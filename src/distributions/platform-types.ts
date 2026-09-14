@@ -34,7 +34,14 @@ export type JavaPlatformCapability =
   RestrictedPlatformCapability | UnrestrictedPlatformCapability;
 
 const X64_ARM64 = ['x64', 'aarch64'] as const;
-const STANDARD_LINUX = ['x64', 'x86', 'aarch64', 'ppc64le', 's390x'] as const;
+const STANDARD_LINUX = [
+  'x64',
+  'x86',
+  'aarch64',
+  'ppc64le',
+  'riscv64',
+  's390x'
+] as const;
 
 export const JAVA_PLATFORM_CAPABILITIES: Record<
   JavaDistribution,
@@ -42,11 +49,7 @@ export const JAVA_PLATFORM_CAPABILITIES: Record<
 > = {
   [JavaDistribution.Temurin]: {
     platforms: {
-      linux: [
-        ...STANDARD_LINUX,
-        'riscv64',
-        {architecture: 'armv7', versionRange: '<18'}
-      ],
+      linux: [...STANDARD_LINUX, {architecture: 'armv7', versionRange: '<18'}],
       macos: X64_ARM64,
       windows: ['x64', 'x86', 'aarch64']
     }

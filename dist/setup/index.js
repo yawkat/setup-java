@@ -31022,15 +31022,18 @@ function createUnsupportedPackageError(distributionName, packageType, supportedP
 
 
 const X64_ARM64 = ['x64', 'aarch64'];
-const STANDARD_LINUX = ['x64', 'x86', 'aarch64', 'ppc64le', 's390x'];
+const STANDARD_LINUX = [
+    'x64',
+    'x86',
+    'aarch64',
+    'ppc64le',
+    'riscv64',
+    's390x'
+];
 const JAVA_PLATFORM_CAPABILITIES = {
     [_package_types_js__WEBPACK_IMPORTED_MODULE_2__/* .JavaDistribution */ .zS.Temurin]: {
         platforms: {
-            linux: [
-                ...STANDARD_LINUX,
-                'riscv64',
-                { architecture: 'armv7', versionRange: '<18' }
-            ],
+            linux: [...STANDARD_LINUX, { architecture: 'armv7', versionRange: '<18' }],
             macos: X64_ARM64,
             windows: ['x64', 'x86', 'aarch64']
         }

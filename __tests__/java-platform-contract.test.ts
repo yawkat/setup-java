@@ -25,7 +25,7 @@ describe('Java platform capabilities', () => {
     ['aarch64', 'aarch64'],
     ['arm64', 'aarch64'],
     ['ppc64le', 'ppc64le'],
-    ['RiScV64', 'riscv64']
+    ['RiScV64', 'riscv64'],
     ['s390x', 's390x']
   ])('normalizes architecture %s to %s', (input, expected) => {
     expect(normalizeArchitecture(input)).toBe(expected);
